@@ -2,9 +2,9 @@ const tracks = [{src: 'Dry Hands.mp3', image: 'Dry Hands.png'}, {src: 'Equinoxe.
 
 let index = 0;
 const track = new Audio('assets/music/'+tracks[index].src);
-load_track(index);
+loadTrack(index);
 
-function load_track(index) {
+function loadTrack(index) {
     const new_track = tracks[index];
     const icon = document.querySelector('.soundtrack-icon');
     const header = document.querySelector('header');
@@ -18,7 +18,7 @@ function load_track(index) {
 function nextTrack() {
     index++
     if (index > tracks.length - 1) {index = 0;};
-    load_track(index);
+    loadTrack(index);
     track.play();
 };
 
@@ -33,7 +33,7 @@ function previousTrack() {
         track.currentTime = 0;
     };
     track.play();
-    load_track(index);
+    loadTrack(index);
 };
 
 function togglePlay() {
