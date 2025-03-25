@@ -2,8 +2,7 @@ const tracks = [{src: 'Dry Hands.mp3', image: 'Dry Hands.png'}, {src: 'Equinoxe.
 
 let index = 0;
 const track = new Audio('assets/music/'+tracks[index].src);
-loadTrack(index);
-h
+
 function loadTrack(index) {
     const new_track = tracks[index];
     const icon = document.querySelector('.soundtrack-icon');
@@ -28,12 +27,11 @@ function previousTrack() {
         if (index < 0) {
             index = tracks.length - 1;
         };
-        track.src = 'assets/music/'+tracks[index].src;
     } else {
         track.currentTime = 0;
     };
-    track.play();
     loadTrack(index);
+    track.play();
 };
 
 function togglePlay() {
@@ -47,7 +45,26 @@ function changeTime(event) {
     track.play()
 };
 
+function loadSidebar() {
+    for (let i of tracks) {
+      const el = document.createElement('div');
+      const sidebar = document.querySelector('.left-sidebar');
+      el.className = 'sidebar-track';
+      el.innerHTML = i.src.split('.')[0];
+      el.onclick = () => {
+        loadTrack(tracks.indexOf(i));
+        track.play();
+    };
+      sidebar.append(el);
+    };
+};
+
 document.querySelector('.button-right').addEventListener('click', nextTrack);
 document.querySelector('.button-left').addEventListener('click', previousTrack);
 document.querySelector('.button-play').addEventListener('click', togglePlay);
 document.querySelector('.player').addEventListener('input', (event) => changeTime(event));
+
+loadSidebar();
+loadTrack(index);
+
+//TODO make slider move with soundtrack
