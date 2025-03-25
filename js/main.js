@@ -11,6 +11,7 @@ function loadTrack(index) {
     track.src = 'assets/music/'+tracks[index].src;
     header.innerHTML = new_track.src.split('.')[0];
     icon.src = 'assets/images/'+new_track.image;
+    loadSidebar(index);
 };
 
 function nextTrack() {
@@ -53,14 +54,13 @@ function loadSidebar(active) {
     sidebar.innerHTML = '';
     for (let sidebar_track of tracks) {
         i = tracks.indexOf(sidebar_track);
-        index = i;
+        const index = i;
         const el = document.createElement('button');
         if (active === index) {el.style.backgroundColor = 'rgb(60, 60, 60)'};
         el.className = 'sidebar-track';
         el.id = `track-${i}`;
         el.innerHTML = sidebar_track.src.split('.')[0];
         el.onclick = () => {
-            loadSidebar(tracks.indexOf(sidebar_track));
             loadTrack(tracks.indexOf(sidebar_track));
             track.play();
         };
