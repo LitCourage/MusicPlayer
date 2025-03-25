@@ -3,7 +3,7 @@ const tracks = [{src: 'Dry Hands.mp3', image: 'Dry Hands.png'}, {src: 'Equinoxe.
 let index = 0;
 const track = new Audio('assets/music/'+tracks[index].src);
 loadTrack(index);
-
+h
 function loadTrack(index) {
     const new_track = tracks[index];
     const icon = document.querySelector('.soundtrack-icon');
