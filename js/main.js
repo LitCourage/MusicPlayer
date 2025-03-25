@@ -7,7 +7,6 @@ function loadTrack(index) {
     const new_track = tracks[index];
     const icon = document.querySelector('.soundtrack-icon');
     const header = document.querySelector('header');
-    const player = document.querySelector('.player');
 
     track.src = 'assets/music/'+tracks[index].src;
     header.innerHTML = new_track.src.split('.')[0];
@@ -45,16 +44,26 @@ function changeTime(event) {
     track.play()
 };
 
-function loadSidebar() {
-    for (let i of tracks) {
-      const el = document.createElement('div');
-      const sidebar = document.querySelector('.left-sidebar');
-      el.className = 'sidebar-track';
-      el.innerHTML = i.src.split('.')[0];
-      el.onclick = () => {
-        loadTrack(tracks.indexOf(i));
-        track.play();
-    };
+function changeVolume(event) {
+    track.volume = event.target.value;
+};
+
+function loadSidebar(active) {
+    const sidebar = document.querySelector('.left-sidebar');
+    sidebar.innerHTML = '';
+    for (let sidebar_track of tracks) {
+        i = tracks.indexOf(sidebar_track);
+        index = i;
+        const el = document.createElement('button');
+        if (active === index) {el.style.backgroundColor = 'rgb(60, 60, 60)'};
+        el.className = 'sidebar-track';
+        el.id = `track-${i}`;
+        el.innerHTML = sidebar_track.src.split('.')[0];
+        el.onclick = () => {
+            loadSidebar(tracks.indexOf(sidebar_track));
+            loadTrack(tracks.indexOf(sidebar_track));
+            track.play();
+        };
       sidebar.append(el);
     };
 };
@@ -63,6 +72,7 @@ document.querySelector('.button-right').addEventListener('click', nextTrack);
 document.querySelector('.button-left').addEventListener('click', previousTrack);
 document.querySelector('.button-play').addEventListener('click', togglePlay);
 document.querySelector('.player').addEventListener('input', (event) => changeTime(event));
+document.querySelector('.volume').addEventListener('input', (event) => changeVolume(event));
 
 loadSidebar();
 loadTrack(index);

@@ -47,6 +47,11 @@ main {
 }
 
 .sidebar-track {
+    display: block;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-weight: 900;
     border: 4px solid;
     text-align: center;
     align-content: center;
@@ -113,7 +118,7 @@ main {
 }
 
 .bottom-buttons-section {
-    height: 25%;
+    height: 15%;
     border-radius: 25px 25px 0 0;
     background-color: rgb(57, 57, 57);
     display: flex;
@@ -158,7 +163,19 @@ main {
     transform: scale(1.1);
     background: rgb(122, 122, 122);
 }
-  
+
+.volume-section {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(57, 57, 57);
+}
+
+.volume {
+    width: 60%;
+}
+
 /* .player::-webkit-slider-thumb {
     visibility: hidden;
 }
