@@ -3,7 +3,8 @@ const tracks = [{src: 'Dry Hands.mp3', image: 'Dry Hands.png'}, {src: 'Equinoxe.
 let index = 0;
 const track = new Audio('assets/music/'+tracks[index].src);
 
-function loadTrack(index) {
+function loadTrack(ind) {
+    index = ind;
     const new_track = tracks[index];
     const icon = document.querySelector('.soundtrack-icon');
     const header = document.querySelector('header');
@@ -56,7 +57,7 @@ function loadSidebar(active) {
         i = tracks.indexOf(sidebar_track);
         const index = i;
         const el = document.createElement('button');
-        if (active === index) {el.style.backgroundColor = 'rgb(60, 60, 60)'};
+        if (active === index) {el.style.backgroundColor = 'rgb(57, 57, 57)'};
         el.className = 'sidebar-track';
         el.id = `track-${i}`;
         el.innerHTML = sidebar_track.src.split('.')[0];
